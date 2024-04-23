@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+        margin: 0;
+        background-size: cover;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .login-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 50vw;
+        height: 40vh;
+        text-align: center;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    .error-message {
+        color: red;
+    }
+</style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm" onsubmit="return validateForm()">
+        <input type="text" id="username" name="username" placeholder="Username">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <input type="submit" value="Login">
+    </form>
+    <div class id="alertContainer"></div>
+</div>
+
+<script>
+function validateForm() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username !== "Hello_User" || password !== "HelloWorld") {
+        displayAlert("alert-danger", "Invalid username or password.");
+        return false;
+    }
+
+    displayAlert("alert-success", "Login successful.");
+
+    
+    window.location.href = "index.html";
+
+    
+    return false;
+}
+
+function displayAlert(className, message) {
+    var alertDiv = document.createElement("div");
+    alertDiv.className = "alert " + className;
+    alertDiv.setAttribute("role", "alert");
+    alertDiv.textContent = message;
+    
+    var alertContainer = document.getElementById("alertContainer");
+    alertContainer.innerHTML = ""; 
+    alertContainer.appendChild(alertDiv);
+}
+</script>
+</body>
+</html>
